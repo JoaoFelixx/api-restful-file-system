@@ -7,7 +7,13 @@ const {
   createUserController,
   updateUserController,
   deleteUserController 
-} = require('../useCases');
+} = require('./useCases');
+
+router.get('/', (req, res) => {
+  return res.json([
+    { name: 'João', lastname: 'Félix' }
+  ])
+})
 
 router.get('/:user_id?', (req, res) => {
   res.sendStatus(200).json({ Welcome: 'Welcome' })
