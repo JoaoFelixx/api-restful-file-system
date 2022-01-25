@@ -1,9 +1,10 @@
 const express = require('express');
 const app     = express();
 const routes  = require('./routes');
+const { middlewareCors } = require('./middleware');
 
 app.use(express.json());
-app.set('json spaces', 2);
+app.use(middleware_cors);
 app.use('/api/v1/users', routes);
 
 const PORT = process.env.PORT || 3000;
