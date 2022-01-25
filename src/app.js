@@ -4,8 +4,8 @@ const routes  = require('./routes');
 const { middlewareCors } = require('./middleware');
 
 app.use(express.json());
-app.use(middleware_cors);
-app.use('/api/v1/users', routes);
+app.use(middlewareCors);
+app.use(routes);
 
 const PORT = process.env.PORT || 3000;
 
