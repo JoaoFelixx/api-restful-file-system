@@ -5,7 +5,7 @@
   "author": "João Félix <joaosilva16387@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": "16.x"
+    "node": "14.x"
   },
   "scripts": {
     "dev": "nodemon src/app.js",
