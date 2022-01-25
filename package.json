@@ -1,0 +1,20 @@
+{
+  "name": "api-nodejs",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "João Félix <joaosilva16387@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "14.x"
+  },
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
