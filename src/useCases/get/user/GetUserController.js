@@ -1,6 +1,6 @@
-const { getUser } = require('./GetUser')
+const getUser = require('./GetUser')
 
-exports.getUserController = async (request, response) => {
+async function getUserController(request, response) {
   try {
     const users = await getUser(request.params.user_id)
 
@@ -9,6 +9,8 @@ exports.getUserController = async (request, response) => {
     return response.status(200).json(users)
 
   } catch (error) {
-    return response.status(500).json({ result: "Error connection" }) 
+    return response.status(500).json({ result: "Error connection" })
   }
 }
+
+module.exports = getUserController;

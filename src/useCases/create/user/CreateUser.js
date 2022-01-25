@@ -1,18 +1,24 @@
 const userRepository = require('../../../repositories/UserRepository');
-const {
-  createHash,
-  createUuid,
-} = require('../../../services');
+const { randomUUID } = require('crypto');
+const { createHash } = require('../../../services');
 
-exports.createUser = async (email, password) => {
-  const uuid = createUuid();
-  const newPassword = await createHash(password);
+async function createUser({ email, password }) { 
+
+  const [
+    _id,
+    passwordHash
+  ] = await Promise.all([
+    randomUUID(),
+    createHash(password)
+  ])
 
   const user = {
-    _id: uuid,
+    _id,
     email: email.toLowerCase(),
-    password: newPassword 
+    password: passwordHash
   }
 
   return await userRepository.save(user);
 }
+
+module.exports = createUser;

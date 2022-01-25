@@ -1,7 +1,4 @@
-const { Router } = require('express');
-
-const router = Router();
-
+const router = require('express').Router();
 const { 
   getUserController,
   createUserController,
@@ -9,15 +6,7 @@ const {
   deleteUserController 
 } = require('./useCases');
 
-router.get('/', (req, res) => {
-  return res.json([
-    { name: 'João', lastname: 'Félix' }
-  ])
-})
-
-router.get('/:user_id?', (req, res) => {
-  res.sendStatus(200).json({ Welcome: 'Welcome' })
-});
+router.get('/:user_id?', getUserController);
 
 router.post('/', createUserController);
 

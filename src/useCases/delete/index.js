@@ -1,5 +1,5 @@
-const { deleteUser } = require('./user/DeleteUser');
-const { deleteUserController } = require('./user/DeleteUserController');
+const deleteUser = require('./user/DeleteUser');
+const deleteUserController = require('./user/DeleteUserController');
 
 module.exports = {
   deleteUser,

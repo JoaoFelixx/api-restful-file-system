@@ -1,8 +1,8 @@
 {
   "name": "api-nodejs",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "app.js",
-  "author": "João Félix <joaosilva16387@gmail.com>",
+  "author": "João Félix <felixxdeveloper@gmail.com>",
   "license": "MIT",
   "engines": {
     "node": "14.x"

@@ -1,6 +1,6 @@
-const { deleteUser } = require('./DeleteUser')
+const deleteUser = require('./DeleteUser')
 
-exports.deleteUserController = async (request, response) => {
+async function deleteUserController (request, response) {
   try {
     await deleteUser(request.params.user_id);
     
@@ -10,3 +10,5 @@ exports.deleteUserController = async (request, response) => {
     response.status(404).json({ result: "User not a found" })
   }
 }
+
+module.exports = deleteUserController;

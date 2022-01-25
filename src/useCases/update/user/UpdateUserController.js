@@ -1,7 +1,7 @@
-const { updateUser } = require('./UpdateUser');
+const updateUser = require('./UpdateUser');
 
 const isInvalidUser = ({ email, password }) => {
-  
+
   const REGEX_EMAIL = /\S+@\S+\.\S+/;
   const error = [];
 
@@ -14,32 +14,34 @@ const isInvalidUser = ({ email, password }) => {
   return error.length > 0 ? error : true;
 }
 
-exports.updateUserController = async (request, response) => {
+async function updateUserController(request, response) {
   if (!request.body.email ||
-      !request.body.password ||
-      !request.params.user_id) return response.sendStatus(400);
+    !request.body.password ||
+    !request.params.user_id) return response.sendStatus(400);
 
   try {
-    
-    const { 
+
+    const {
       body: {
         email,
         password
       },
       params: {
         user_id
-      } 
+      }
     } = request;
 
     const thereErrors = isInvalidUser(email, password)
-  
-    if (thereErrors) return response.status(400).json({ messages: thereErrors }) 
 
-    await updateUser(user_id, email, password)
+    if (thereErrors) return response.status(400).json({ messages: thereErrors })
+
+    await updateUser({id: user_id, email, password})
 
     return response.sendStatus(202)
-  
+
   } catch (errors) {
     return response.status(404).json({ result: "User not a found" })
   }
 }
+
+module.exports = updateUserController;

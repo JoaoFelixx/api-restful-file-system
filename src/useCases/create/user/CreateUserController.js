@@ -1,7 +1,7 @@
-const { createUser } = require('./CreateUser')
+const createUser = require('./CreateUser')
 
 const isInvalidUser = ({ email, password }) => {
-  
+
   const REGEX_EMAIL = /\S+@\S+\.\S+/;
   const error = [];
 
@@ -14,9 +14,9 @@ const isInvalidUser = ({ email, password }) => {
   return error.length > 0 ? error : false;
 }
 
-exports.createUserController = async (request, response) => {
+async function createUserController(request, response) {
   if (!request.body.email || !request.body.password) return response.sendStatus(400);
-  
+
   try {
     const { email, password } = request.body;
 
@@ -24,11 +24,13 @@ exports.createUserController = async (request, response) => {
 
     if (thereErrors) return response.status(400).json({ message: [thereErrors] })
 
-    await createUser(email, password)
+    await createUser({ email, password })
 
     return response.sendStatus(201)
 
   } catch (error) {
     response.status(400).json({ results: "Email is already registered" })
-  } 
+  }
 }
+
+module.exports = createUserController;

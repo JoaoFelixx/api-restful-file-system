@@ -1,6 +1,6 @@
 const userRepository = require('../../../repositories/UserRepository');
 
-exports.getUser = async (id) => {
+async function getUser(id) {
   try {
     const users =  await userRepository.find(id)
     
@@ -10,3 +10,5 @@ exports.getUser = async (id) => {
     throw new Error(error)
   }
 }
+
+module.exports = getUser;
