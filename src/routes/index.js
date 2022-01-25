@@ -9,7 +9,9 @@ const {
   deleteUserController 
 } = require('../useCases');
 
-router.get('/:user_id?', getUserController);
+router.get('/:user_id?', (req, res) => {
+  res.sendStatus(200).json({ Welcome: 'Welcome' })
+});
 
 router.post('/', createUserController);
 
